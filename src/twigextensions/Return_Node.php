@@ -1,6 +1,8 @@
 <?php
 namespace marionnewlevant\twigperversion\twigextensions;
 
+use marionnewlevant\twigperversion\Plugin;
+
 /**
  * Twig Perversion
  *
@@ -19,9 +21,11 @@ class Return_Node extends \Twig\Node\Node
 	*/
 	public function compile(\Twig\Compiler $compiler)
 	{
+        $marker = sprintf('[RETURN_MARKER:%s]', mt_rand());
 		$compiler
-			->addDebugInfo($this)
-			->write('return ');
+            ->addDebugInfo($this)
+            ->write(sprintf("%s::\$returnValues['%s'] = ", Plugin::class, $marker));
+
 		// check for an expression to return.
 		if ($this->hasNode('expr')) {
 			$compiler->subcompile($this->getNode('expr'));
@@ -31,6 +35,8 @@ class Return_Node extends \Twig\Node\Node
 			$compiler->raw('""');
 		}
 
-		$compiler->raw(";\n");
+		$compiler
+            ->raw(";\n")
+            ->write(sprintf("yield '%s';\n", $marker));
 	}
 }
