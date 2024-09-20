@@ -21,10 +21,13 @@ class Return_Node extends \Twig\Node\Node
 	*/
 	public function compile(\Twig\Compiler $compiler)
 	{
-        $marker = sprintf('[RETURN_MARKER:%s]', mt_rand());
 		$compiler
             ->addDebugInfo($this)
-            ->write(sprintf("%s::\$returnValues['%s'] = ", Plugin::class, $marker));
+            ->write("if (!isset(\$returnedMarker)) {\n")
+            ->indent()
+            ->write("\$returnedMarker = true;\n")
+            ->write("\$marker = sprintf('[RETURN_MARKER:%s]', mt_rand());\n")
+            ->write(sprintf("%s::\$returnValues[\$marker] = ", Plugin::class));
 
 		// check for an expression to return.
 		if ($this->hasNode('expr')) {
@@ -37,6 +40,8 @@ class Return_Node extends \Twig\Node\Node
 
 		$compiler
             ->raw(";\n")
-            ->write(sprintf("yield '%s';\n", $marker));
+            ->write("yield \$marker;\n")
+            ->outdent()
+            ->write("}\n");
 	}
 }
