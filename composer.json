@@ -1,7 +1,7 @@
 {
   "name": "marionnewlevant/twig-perversion",
   "description": "Making twig do things it really shouldn't",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "type": "craft-plugin",
   "keywords": [
     "craft",
@@ -23,7 +23,7 @@
   },
   "require": {
     "php": ">=8.2",
-    "craftcms/cms": "5.0 - 5.3"
+    "craftcms/cms": "^5.0"
   },
   "autoload": {
     "psr-4": {

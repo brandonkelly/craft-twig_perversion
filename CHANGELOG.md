@@ -1,5 +1,11 @@
 # Twig Perversion Changelog
 
+## 5.0.1 - 2024.11.28
+
+###
+
+- Merged in Brandon's fix for twig 3.12 breaking `{% return %}`
+
 ## 5.0.0 - 2024.04.29
 
 ### Changed

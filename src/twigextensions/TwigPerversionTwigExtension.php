@@ -97,7 +97,14 @@ class TwigPerversionTwigExtension extends \Twig\Extension\AbstractExtension
 		];
 	}
 
-	/**
+    public function getNodeVisitors()
+    {
+        return [
+            new Return_NodeVisitor(),
+        ];
+    }
+
+    /**
 	 * Cast value as a string.
 	 *
 	 * @param mixed $subject Value to be cast.

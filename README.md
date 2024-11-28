@@ -1,11 +1,5 @@
 # Twig Perversion plugin for Craft CMS
 
-## Obituary
-
-Twig Perversions tags no longer work as of twig 3.12 (Craft version 5.4). Twig used to compile its macros into fairly straightforward functions, which Twig Perversion was able to hack. They are now using generator functions, and the old hacks no longer work.
-
-## Intro
-
 Making twig do things it really shouldn&#39;t. Twig is not intended to be a general purpose programming language, and there are some things that really don't belong in the language. This plugin adds a few of those things anyway.
 
 - `{% while %}`, `{% break %}`, `{% continue %}`, and `{% return %}` tags
@@ -15,7 +9,7 @@ Making twig do things it really shouldn&#39;t. Twig is not intended to be a gene
 
 ## Requirements
 
-This plugin requires Craft CMS 3.1.29 or later.
+This plugin requires Craft CMS 4.12 or later.
 
 ## Installation
 
